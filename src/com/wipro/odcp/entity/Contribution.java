@@ -62,4 +62,19 @@ public class Contribution {
 	
 	
 	
-}
+//	private String contibutionId;
+//	private String userId;
+//	private String campaignId;
+//	private double amount;
+//	private String date;
+	
+	@Override
+	    public String toString() {
+
+	        return "ContibutionId: "+contibutionId+"\n UserId: "+userId+"\n campaignId:"+campaignId+"\n amount:"+amount+"\n date: "+date;
+	    }
+	}
+	
+	
+	
+

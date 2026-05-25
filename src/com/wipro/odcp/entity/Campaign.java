@@ -8,15 +8,9 @@ public class Campaign {
       private String discription;
       private double goalAmount;
       private double collectedAmount;
-      private boolean active;
+      private boolean active=true;
       
-      
-      
-      
-      
-	
-
-	  public Campaign(String campaignId, String ownerId, String title, String discription, double goalAmount,
+      public Campaign(String campaignId, String ownerId, String title, String discription, double goalAmount,
 			double collectedAmount, boolean active) {
 		
 		this.campaignId = campaignId;
@@ -29,22 +23,7 @@ public class Campaign {
 	}
 	 
 
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-	  public String getCampaignId() {
+      public String getCampaignId() {
 		  return campaignId;
 	  }
 	  
@@ -56,13 +35,13 @@ public class Campaign {
 		  return title;
 	  }
 	  
-	  public void setCampaignId(String campaignId) {
-		this.campaignId = campaignId;
-	}
+//	  public void setCampaignId(String campaignId) {
+//		this.campaignId = campaignId;
+//	}
 
-	  public void setOwnerId(String ownerId) {
-		  this.ownerId = ownerId;
-	  }
+//	  public void setOwnerId(String ownerId) {
+//		  this.ownerId = ownerId;
+//	  }
 
 	  public void setTitle(String title) {
 		  this.title = title;
@@ -72,9 +51,9 @@ public class Campaign {
 		  this.discription = discription;
 	  }
 
-	  public void setGoalAmount(double goalAmount) {
-		  this.goalAmount = goalAmount;
-	  }
+//	  public void setGoalAmount(double goalAmount) {
+//		  this.goalAmount = goalAmount;
+//	  }
 
 	
 
@@ -86,20 +65,7 @@ public class Campaign {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	  public String getDiscription() {
+      public String getDiscription() {
 		  return discription;
 	  }
 	  
@@ -121,6 +87,4 @@ public class Campaign {
 
       
       
-            
-      
-}
+  }

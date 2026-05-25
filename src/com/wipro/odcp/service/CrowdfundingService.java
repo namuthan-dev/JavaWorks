@@ -12,12 +12,14 @@ import com.wipro.odcp.util.UserNotFoundException;
 
 
 
+
+
 public class CrowdfundingService {
 	
 	private ArrayList<User> user = new ArrayList<User>();
 	private ArrayList<Campaign> campaign = new ArrayList<Campaign>();
 	private ArrayList<Contribution> contribution = new ArrayList<Contribution>();
-	
+	double remainingAmount ;
 	
 	//constructor
 	public CrowdfundingService(ArrayList<User> users, ArrayList<Campaign> campaigns, ArrayList<Contribution> contributions) {
@@ -28,12 +30,12 @@ public class CrowdfundingService {
 	}
 	
 	public void addUser(User u) {
-		
+										
 		
 		
 			for(User unew : user) {
 				if(unew.getUserID().equals(u.getUserID())) {
-				
+				    System.out.println("user exist.");
 					break;
 				}
 				else {
@@ -51,23 +53,37 @@ public class CrowdfundingService {
 			if(u.getUserID().equals(userId)) {
 				return u;
 			}
+//			else {
+//				throw new UserNotFoundException();
+//			}
 		}
+		return null;
 		
-		throw new UserNotFoundException();
+		
 	}
 	
 	
 	public void createCampaign(Campaign c) throws UserNotFoundException {
-		System.out.println("Campaign"+c.getTitle()+" Created..");
-		campaign.add(c);
+		
+		//for loop to campare uid
+		for(User u : user) {
+			if(u.getUserID().equals(c.getOwnerId())) {
+				System.out.println("Campaign"+c.getTitle()+" Created..");
+				campaign.add(c);
+			}
+			else {
+				System.out.println("User ID mismatch.Please check your UserID and try again");
+			}
+		}
+		
 	}
 	
 	public Campaign findCampaign(String 
-			campaignId) throws 
-			CampaignNotFoundException{
+			campaignId) throws CampaignNotFoundException{
 		
 		for( Campaign c : campaign){
 			if (c.getCampaignId().equals(campaignId)) {
+//				System.out.println("exist");
 				return c;
 			}
 		}
@@ -93,7 +109,7 @@ public class CrowdfundingService {
 			
 		}
 	
-		
+		//unique contribution id
 		for (Contribution c: contribution) {
 			if(c.getContibutionId().equals(contributionId)) {
 				System.out.println("Contribution id alread exist please choose new Contribution ID.");
@@ -102,38 +118,69 @@ public class CrowdfundingService {
 		
 	    Contribution contribute =new Contribution(contributionId,userId,campaignId,amount,date);
 	    contribution.add(contribute);
-		
+	    
+	    for(Campaign camp : campaign) {
+	    	if(camp.getCampaignId().equals(campaignId)) {
+	    		camp.setCollectedAmount(amount);
+	    		remainingAmount=camp.getGoalAmount()-camp.getCollectedAmount();
+	    	}
+	    }
 	    
 	}
 	
+
+	
 	public ArrayList<Contribution> getContributionsForCampaign(String campaignId)  {
     	for(Contribution con : contribution) {
-    		if(con.getCampaignId().equalsIgnoreCase(campaignId)) {
+    		if(con.getCampaignId(). equals(campaignId)) {
     			return contribution;
+    			
     		}
+    	
     	}
-    	return null;
+    	
+		return null;
     	
     }
+	
+	public void closeCampaign(String 
+			campaignId) {
+		
+		for (Campaign camp:campaign) {
+			if(camp.getCampaignId().equals(campaignId)) {
+				if(camp.getCollectedAmount()==camp.getGoalAmount()) {
+					camp.setActive(false);
+					camp.isActive();
+					System.out.println("Campaign Flood Relief Fund Closed.\r\n"
+							+ "No more Contribution needed ThankYou For your Support!!!");
+			
+				}
+				
+			}
+		}
+		
+	}
 	
 	public String generateCampaignSummary(String campaignId) {
 		
 		String summary = null ;
 	    for (Campaign cam:campaign) {
 	    	if(cam.getCampaignId().equals(campaignId)) {
-	    		summary="CamapignId : " + cam.getCampaignId() + "\n Campaign owner Id :"+cam.getOwnerId()+"\n Campaign Title: "+ cam.getTitle()+" \n Campaign Description: "+cam.getDiscription()+"\n Goal amount: "+cam.getGoalAmount()+"\n Collected amount: "+ cam.getCollectedAmount() ;
+	    		
+	    		summary="CamapignId : " + cam.getCampaignId() + "\n Campaign owner Id :"+cam.getOwnerId()+"\n Campaign Title: "+ cam.getTitle()+" \n Campaign Description: "+cam.getDiscription()+"\n Goal amount: "+cam.getGoalAmount()+"\n Collected amount: "+
+	    	cam.getCollectedAmount() +"\n Amount Still Needed: "+remainingAmount+"\n=====Campaign Contributions=====\n"+ getContributionsForCampaign(campaignId) + "\n ====Campaign Status==== \n " ;
+	    	
 	    	}
 	    	
 	    }
+		closeCampaign(campaignId);
+
+	    
 	    return summary;
+	    
 	}
 	
 	
-	
-	
-
-
-	 
 } 
 	
 	
