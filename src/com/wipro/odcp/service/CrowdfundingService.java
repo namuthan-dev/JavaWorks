@@ -155,7 +155,7 @@ public class CrowdfundingService {
 			if(camp.getCampaignId().equals(campaignId)) {
 				if(camp.getCollectedAmount()==camp.getGoalAmount()) {
 					camp.setActive(false);
-					camp.isActive();
+//					camp.isActive();
 //					System.out.println("Campaign "+camp.getTitle()+ " Closed.\r\n"
 //							+ "No more Contribution needed ThankYou For your Support!!!");
 			
