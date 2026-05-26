@@ -24,7 +24,7 @@ public class Main {
 		            service.createCampaign(c1); 
 		            
 		            // Make contributions 
-		            service.contribute("CN001", "U001", "C001", 50000, "2025-08-11"); 
+		            service.contribute("CN001", "U001", "C001", 5000, "2025-08-11"); 
 //		            //test
 //		            Contribution c =new Contribution("CN001", "U001", "C001", 5000, "2025-08-11");
 //		            //test

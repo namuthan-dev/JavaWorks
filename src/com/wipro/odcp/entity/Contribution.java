@@ -15,35 +15,33 @@ public class Contribution {
 		this.campaignId = campaignId;
 		this.amount = amount;
 		this.date = date;
-	}
+	} 
 	
 	
 	public String getContibutionId() {
 		return contibutionId;
 	}
 	
-	public void setContibutionId(String contibutionId) {
-		this.contibutionId = contibutionId;
-	}
+//	public void setContibutionId(String contibutionId) {
+//		this.contibutionId = contibutionId;
+//	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+//	public void setUserId(String userId) {
+//		this.userId = userId;
+//	}
 
-	public void setCampaignId(String campaignId) {
-		this.campaignId = campaignId;
-	}
+//	public void setCampaignId(String campaignId) {
+//		this.campaignId = campaignId;
+//	}
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+//	public void setDate(String date) {
+//		this.date = date;
+//	}
 
 	public String getUserId() {
 		return userId;
 	}
 	
-	
-
 	public String getCampaignId() {
 		return campaignId;
 	}
@@ -75,6 +73,8 @@ public class Contribution {
 	    }
 	}
 	
+	
+
 	
 	
 

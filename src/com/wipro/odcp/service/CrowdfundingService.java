@@ -35,7 +35,11 @@ public class CrowdfundingService {
 		
 			for(User unew : user) {
 				if(unew.getUserID().equals(u.getUserID())) {
-				    System.out.println("user exist.");
+				    System.out.println("userID already exist.");
+					break;
+				}
+			    if(unew.getEmail().equals(u.getEmail())) {
+					System.out.println("user email already  exist.");
 					break;
 				}
 				else {
@@ -57,7 +61,7 @@ public class CrowdfundingService {
 //				throw new UserNotFoundException();
 //			}
 		}
-		return null;
+		return null; 
 		
 		
 	}
@@ -83,6 +87,7 @@ public class CrowdfundingService {
 		
 		for( Campaign c : campaign){
 			if (c.getCampaignId().equals(campaignId)) {
+			
 //				System.out.println("exist");
 				return c;
 			}
@@ -151,8 +156,8 @@ public class CrowdfundingService {
 				if(camp.getCollectedAmount()==camp.getGoalAmount()) {
 					camp.setActive(false);
 					camp.isActive();
-					System.out.println("Campaign Flood Relief Fund Closed.\r\n"
-							+ "No more Contribution needed ThankYou For your Support!!!");
+//					System.out.println("Campaign "+camp.getTitle()+ " Closed.\r\n"
+//							+ "No more Contribution needed ThankYou For your Support!!!");
 			
 				}
 				
@@ -164,16 +169,17 @@ public class CrowdfundingService {
 	public String generateCampaignSummary(String campaignId) {
 		
 		String summary = null ;
+		closeCampaign(campaignId);
 	    for (Campaign cam:campaign) {
 	    	if(cam.getCampaignId().equals(campaignId)) {
 	    		
-	    		summary="CamapignId : " + cam.getCampaignId() + "\n Campaign owner Id :"+cam.getOwnerId()+"\n Campaign Title: "+ cam.getTitle()+" \n Campaign Description: "+cam.getDiscription()+"\n Goal amount: "+cam.getGoalAmount()+"\n Collected amount: "+
-	    	cam.getCollectedAmount() +"\n Amount Still Needed: "+remainingAmount+"\n=====Campaign Contributions=====\n"+ getContributionsForCampaign(campaignId) + "\n ====Campaign Status==== \n " ;
+	    		summary=" CamapignId : " + cam.getCampaignId() + "\n Campaign owner Id :"+cam.getOwnerId()+"\n Campaign Title: "+ cam.getTitle()+" \n Campaign Description: "+cam.getDiscription()+"\n Goal amount: "+cam.getGoalAmount()+"\n Collected amount: "+
+	    	cam.getCollectedAmount() +"\n Amount Still Needed: "+remainingAmount+"\n=====Campaign Contributions=====\n"+ getContributionsForCampaign(campaignId) + "\n ====Campaign Status==== \n " + cam.isActive();
 	    	
 	    	}
 	    	
 	    }
-		closeCampaign(campaignId);
+		
 
 	    
 	    return summary;

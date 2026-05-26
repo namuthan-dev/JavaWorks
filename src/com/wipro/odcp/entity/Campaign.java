@@ -55,19 +55,13 @@ public class Campaign {
 //		  this.goalAmount = goalAmount;
 //	  }
 
-	
-
-	 
-	  public void setCollectedAmount(double collectedAmount) {
-		this.collectedAmount = collectedAmount;
-	}
-
-
-
-
-      public String getDiscription() {
+	 public String getDiscription() {
 		  return discription;
 	  }
+      
+      public void setCollectedAmount(double collectedAmount) {
+		this.collectedAmount = collectedAmount;
+	}
 	  
 	  public double getGoalAmount() {
 		  return goalAmount;
@@ -88,3 +82,11 @@ public class Campaign {
       
       
   }
+
+	 
+	 
+
+
+
+
+     
