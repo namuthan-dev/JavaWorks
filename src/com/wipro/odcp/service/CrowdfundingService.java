@@ -9,11 +9,6 @@ import com.wipro.odcp.util.InvalidContributionException;
 import com.wipro.odcp.util.UserNotFoundException;
 
 
-
-
-
-
-
 public class CrowdfundingService {
 	
 	private ArrayList<User> user = new ArrayList<User>();
@@ -57,11 +52,9 @@ public class CrowdfundingService {
 			if(u.getUserID().equals(userId)) {
 				return u;
 			}
-//			else {
-//				throw new UserNotFoundException();
-//			}
+
 		}
-		return null; 
+		throw new UserNotFoundException();
 		
 		
 	}
@@ -72,12 +65,10 @@ public class CrowdfundingService {
 		//for loop to campare uid
 		for(User u : user) {
 			if(u.getUserID().equals(c.getOwnerId())) {
-				System.out.println("Campaign"+c.getTitle()+" Created..");
+				System.out.println("Campaign "+c.getTitle()+" Created..");
 				campaign.add(c);
 			}
-			else {
-				System.out.println("User ID mismatch.Please check your UserID and try again");
-			}
+
 		}
 		
 	}
@@ -155,10 +146,7 @@ public class CrowdfundingService {
 			if(camp.getCampaignId().equals(campaignId)) {
 				if(camp.getCollectedAmount()==camp.getGoalAmount()) {
 					camp.setActive(false);
-//					camp.isActive();
-//					System.out.println("Campaign "+camp.getTitle()+ " Closed.\r\n"
-//							+ "No more Contribution needed ThankYou For your Support!!!");
-			
+
 				}
 				
 			}
@@ -170,19 +158,19 @@ public class CrowdfundingService {
 		
 		String summary = null ;
 		closeCampaign(campaignId);
+		
+		
 	    for (Campaign cam:campaign) {
 	    	if(cam.getCampaignId().equals(campaignId)) {
 	    		
-	    		summary=" CamapignId : " + cam.getCampaignId() + "\n Campaign owner Id :"+cam.getOwnerId()+"\n Campaign Title: "+ cam.getTitle()+" \n Campaign Description: "+cam.getDiscription()+"\n Goal amount: "+cam.getGoalAmount()+"\n Collected amount: "+
+	    		summary="=====Campaign Deatails=====\n"+" CamapignId : " + cam.getCampaignId() + "\n Campaign owner Id :"+cam.getOwnerId()+"\n Campaign Title: "+ cam.getTitle()+" \n Campaign Description: "+cam.getDiscription()+"\n Goal amount: "+cam.getGoalAmount()+"\n Collected amount: "+
 	    	cam.getCollectedAmount() +"\n Amount Still Needed: "+remainingAmount+"\n=====Campaign Contributions=====\n"+ getContributionsForCampaign(campaignId) + "\n ====Campaign Status==== \n " + cam.isActive();
 	    	
 	    	}
 	    	
 	    }
-		
-
-	    
-	    return summary;
+	
+		  return summary;
 	    
 	}
 	
@@ -192,4 +180,10 @@ public class CrowdfundingService {
 	
 	
 	
+
+
+
+
+
+
 

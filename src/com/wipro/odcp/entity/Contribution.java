@@ -22,23 +22,7 @@ public class Contribution {
 		return contibutionId;
 	}
 	
-//	public void setContibutionId(String contibutionId) {
-//		this.contibutionId = contibutionId;
-//	}
-
-//	public void setUserId(String userId) {
-//		this.userId = userId;
-//	}
-
-//	public void setCampaignId(String campaignId) {
-//		this.campaignId = campaignId;
-//	}
-
-//	public void setDate(String date) {
-//		this.date = date;
-//	}
-
-	public String getUserId() {
+    public String getUserId() {
 		return userId;
 	}
 	
@@ -57,14 +41,6 @@ public class Contribution {
 	public String getDate() {
 		return date;
 	}
-	
-	
-	
-//	private String contibutionId;
-//	private String userId;
-//	private String campaignId;
-//	private double amount;
-//	private String date;
 	
 	@Override
 	    public String toString() {

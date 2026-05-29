@@ -34,14 +34,7 @@ public class Campaign {
 	  public String getTitle() {
 		  return title;
 	  }
-	  
-//	  public void setCampaignId(String campaignId) {
-//		this.campaignId = campaignId;
-//	}
 
-//	  public void setOwnerId(String ownerId) {
-//		  this.ownerId = ownerId;
-//	  }
 
 	  public void setTitle(String title) {
 		  this.title = title;
@@ -50,10 +43,6 @@ public class Campaign {
 	  public void setDiscription(String discription) {
 		  this.discription = discription;
 	  }
-
-//	  public void setGoalAmount(double goalAmount) {
-//		  this.goalAmount = goalAmount;
-//	  }
 
 	 public String getDiscription() {
 		  return discription;
